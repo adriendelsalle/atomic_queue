@@ -15,3 +15,19 @@ target_include_directories(
     INTERFACE
     ${CMAKE_CURRENT_SOURCE_DIR}
 )
+
+install(
+    TARGETS atomic_queue
+    EXPORT ${PROJECT_NAME}-targets
+)
+
+install(
+    EXPORT ${PROJECT_NAME}-targets
+    FILE ${PROJECT_NAME}Targets.cmake
+    DESTINATION ${CMAKECONFIG_INSTALL_DIR}
+)
+
+export(
+    EXPORT ${PROJECT_NAME}-targets
+    FILE ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Targets.cmake
+)
