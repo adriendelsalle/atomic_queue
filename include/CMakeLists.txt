@@ -17,6 +17,17 @@ target_include_directories(
     $<INSTALL_INTERFACE:include>
 )
 
+
+include(GNUInstallDirs) 
+include(CMakePackageConfigHelpers)
+
+set(CMAKECONFIG_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}" CACHE
+    STRING "install path for atomic_queueConfig.cmake")
+
+configure_package_config_file(cmake/${PROJECT_NAME}Config.cmake.in
+    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+    INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR})
+
 install(
     TARGETS atomic_queue
     EXPORT ${PROJECT_NAME}-targets
