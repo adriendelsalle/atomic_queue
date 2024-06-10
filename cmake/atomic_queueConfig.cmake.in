@@ -1,0 +1,13 @@
+# atomic_queue cmake module
+# This module sets the following variables in your project::
+#
+#   atomic_queue_FOUND - true if atomic_queue is found on the system
+#   atomic_queue_INCLUDE_DIRS - the directory containing atomic_queue headers
+#   atomic_queue_LIBRARY - empty
+
+@PACKAGE_INIT@
+
+if(NOT TARGET @PROJECT_NAME@)
+  include("${CMAKE_CURRENT_LIST_DIR}/@PROJECT_NAME@Targets.cmake")
+  get_target_property(@PROJECT_NAME@_INCLUDE_DIRS atomic_queue INTERFACE_INCLUDE_DIRECTORIES)
+endif()
