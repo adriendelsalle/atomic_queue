@@ -12,6 +12,16 @@ OPTION( ATOMIC_QUEUE_BUILD_EXAMPLES
     OFF
 )
 
+include(GNUInstallDirs) 
+include(CMakePackageConfigHelpers)
+
+set(CMAKECONFIG_INSTALL_DIR "${CMAKE_INSTALL_LIBDIR}/cmake/${PROJECT_NAME}" CACHE
+    STRING "install path for atomic_queueConfig.cmake")
+
+configure_package_config_file(${CMAKE_CURRENT_SOURCE_DIR}/cmake/${PROJECT_NAME}Config.cmake.in
+    "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake"
+    INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR})
+
 if ( PROJECT_IS_TOP_LEVEL )
     set(CMAKE_CXX_STANDARD 14)
     set(CMAKE_CXX_STANDARD_REQUIRED)
